@@ -36,6 +36,7 @@ A Helm chart for deploying ORY Hydra in Kubernetes
 | deployment.extraEnv | list | `[]` | If you want to use Jaeger with agents being deployed in a daemonset, you can  -- use the following ENV vars to configure the right endpoints using the IP  -- address of the node the pod has been deployed to.  extraEnv:   - name: JAEGER_AGENT_HOST     valueFrom:       fieldRef:         fieldPath: status.hostIP    - name: TRACING_PROVIDERS_JAEGER_LOCAL_AGENT_ADDRESS     value: $(JAEGER_AGENT_HOST):6831   - name: TRACING_PROVIDERS_JAEGER_SAMPLING_SERVER_URL     value: http://$(JAEGER_AGENT_HOST):5778 |
 | deployment.extraVolumeMounts | list | `[]` |  |
 | deployment.extraVolumes | list | `[]` | If you want to mount external volume |
+| deployment.initContainers | object | `{}` | If you want to add init containers to the SQL migration and deployment pods"
 | deployment.labels | object | `{}` |  |
 | deployment.lifecycle | object | `{}` |  |
 | deployment.livenessProbe | object | `{"failureThreshold":5,"initialDelaySeconds":30,"periodSeconds":10}` | Configure the probes for when the deployment is considered ready and ongoing health check |
